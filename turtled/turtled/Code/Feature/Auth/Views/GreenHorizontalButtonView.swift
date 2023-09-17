@@ -2,8 +2,9 @@ import SwiftUI
 
 struct GreenHorizontalButtonView: View {
     var text: String
-        var action: () -> Void
+    var action: () -> Void
     var isEnabled: Bool = true
+    
     var body: some View {
         Button(action: action) {
             Text(text)

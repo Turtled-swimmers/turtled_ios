@@ -248,7 +248,7 @@ struct HomeView: View {
     func startAnimationTimer() {
         animationTimer?.invalidate()
         animationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            withAnimation(.linear(duration: 1.0)) {
+            withAnimation(.linear(duration: 0.8)) {
                 isTurtle1.toggle()
             }
         }
