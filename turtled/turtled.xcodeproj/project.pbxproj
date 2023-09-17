@@ -11,6 +11,11 @@
 		988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988CE5092AB3249100EADBA4 /* ContentView.swift */; };
 		988CE50C2AB3249200EADBA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988CE50B2AB3249200EADBA4 /* Assets.xcassets */; };
 		988CE50F2AB3249200EADBA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988CE50E2AB3249200EADBA4 /* Preview Assets.xcassets */; };
+		98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A12AB6E53100BC531F /* ProfileView.swift */; };
+		98B923A52AB6E54100BC531F /* MedalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A42AB6E54100BC531F /* MedalView.swift */; };
+		98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A82AB6E56200BC531F /* DalsungView.swift */; };
+		98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923AB2AB6E57500BC531F /* HomeView.swift */; };
+		98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923AE2AB6EDD300BC531F /* MedalModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		988CE5092AB3249100EADBA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		988CE50B2AB3249200EADBA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		988CE50E2AB3249200EADBA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		98B923A12AB6E53100BC531F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		98B923A42AB6E54100BC531F /* MedalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalView.swift; sourceTree = "<group>"; };
+		98B923A82AB6E56200BC531F /* DalsungView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalsungView.swift; sourceTree = "<group>"; };
+		98B923AB2AB6E57500BC531F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		98B923AE2AB6EDD300BC531F /* MedalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +61,10 @@
 		988CE5062AB3249100EADBA4 /* turtled */ = {
 			isa = PBXGroup;
 			children = (
+				98B923962AB6E12000BC531F /* Code */,
+				98B923952AB6E11100BC531F /* Resources */,
 				988CE5072AB3249100EADBA4 /* turtledApp.swift */,
 				988CE5092AB3249100EADBA4 /* ContentView.swift */,
-				988CE50B2AB3249200EADBA4 /* Assets.xcassets */,
 				988CE50D2AB3249200EADBA4 /* Preview Content */,
 			);
 			path = turtled;
@@ -65,6 +76,138 @@
 				988CE50E2AB3249200EADBA4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		98B923952AB6E11100BC531F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				988CE50B2AB3249200EADBA4 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		98B923962AB6E12000BC531F /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				98B9239B2AB6E1AB00BC531F /* Utiles */,
+				98B923972AB6E12400BC531F /* Feature */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		98B923972AB6E12400BC531F /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				98B9239E2AB6E51D00BC531F /* Profile */,
+				98B9239D2AB6E51900BC531F /* Medal */,
+				98B9239C2AB6E50F00BC531F /* Dalsung */,
+				98B923982AB6E12700BC531F /* Home */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		98B923982AB6E12700BC531F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				98B9239A2AB6E13600BC531F /* Models */,
+				98B923992AB6E12D00BC531F /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		98B923992AB6E12D00BC531F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98B923AB2AB6E57500BC531F /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		98B9239A2AB6E13600BC531F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		98B9239B2AB6E1AB00BC531F /* Utiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utiles;
+			sourceTree = "<group>";
+		};
+		98B9239C2AB6E50F00BC531F /* Dalsung */ = {
+			isa = PBXGroup;
+			children = (
+				98B923AD2AB6E57900BC531F /* Models */,
+				98B923A72AB6E55A00BC531F /* Views */,
+			);
+			path = Dalsung;
+			sourceTree = "<group>";
+		};
+		98B9239D2AB6E51900BC531F /* Medal */ = {
+			isa = PBXGroup;
+			children = (
+				98B923A62AB6E54900BC531F /* Models */,
+				98B923A32AB6E53700BC531F /* Views */,
+			);
+			path = Medal;
+			sourceTree = "<group>";
+		};
+		98B9239E2AB6E51D00BC531F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				98B923A02AB6E52400BC531F /* Views */,
+				98B9239F2AB6E52100BC531F /* Models */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		98B9239F2AB6E52100BC531F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		98B923A02AB6E52400BC531F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98B923A12AB6E53100BC531F /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		98B923A32AB6E53700BC531F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98B923A42AB6E54100BC531F /* MedalView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		98B923A62AB6E54900BC531F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				98B923AE2AB6EDD300BC531F /* MedalModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		98B923A72AB6E55A00BC531F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98B923A82AB6E56200BC531F /* DalsungView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		98B923AD2AB6E57900BC531F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B923A52AB6E54100BC531F /* MedalView.swift in Sources */,
+				98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */,
 				988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */,
+				98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */,
+				98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */,
+				98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */,
 				988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +423,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +453,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
