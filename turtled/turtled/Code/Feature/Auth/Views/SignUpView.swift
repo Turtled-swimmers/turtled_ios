@@ -1,10 +1,3 @@
-//
-//  SignUpView.swift
-//  turtled
-//
-//  Created by 서희찬 on 2023/09/18.
-//
-
 import SwiftUI
 
 struct SignUpView: View {

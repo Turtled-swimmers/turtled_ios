@@ -50,17 +50,15 @@ struct LoginView: View {
                         }) {
                             Text("비밀번호 찾기")
                                 .foregroundColor(Color(red: 0.77, green: 0.78, blue: 0.8))
-
                         }
-                        Button(action: {
-                            // 회원가입 WebView를 열기
-                        }) {
+                        NavigationLink(destination: SignUpView()) {
                             Text("회원가입")
                                 .foregroundColor(Color(red: 0.77, green: 0.78, blue: 0.8))
-
                         }
+
                     }.padding(.top, 10)
                 }
+                
 
 
                 
