@@ -47,7 +47,7 @@ struct MedalView: View {
                 .padding(.top,20)
                 // 아래여백
                 Spacer()
-            } .navigationTitle("달성") // Navigation Title 설정
+            } .navigationTitle("메달") // Navigation Title 설정
         }
 
         
