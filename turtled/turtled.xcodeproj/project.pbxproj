@@ -20,6 +20,7 @@
 		98B923BB2AB6F35F00BC531F /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B72AB6F35F00BC531F /* SUIT-Regular.otf */; };
 		98B923BC2AB6F35F00BC531F /* SUIT-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B82AB6F35F00BC531F /* SUIT-Bold.otf */; };
 		98B923BD2AB6F35F00BC531F /* SUIT-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B92AB6F35F00BC531F /* SUIT-Medium.otf */; };
+		98B923C22AB6F7AA00BC531F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923C12AB6F7AA00BC531F /* AlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		98B923B72AB6F35F00BC531F /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
 		98B923B82AB6F35F00BC531F /* SUIT-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.otf"; sourceTree = "<group>"; };
 		98B923B92AB6F35F00BC531F /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
+		98B923C12AB6F7AA00BC531F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		98B923972AB6E12400BC531F /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				98B923BE2AB6F79100BC531F /* Alert */,
 				98B9239E2AB6E51D00BC531F /* Profile */,
 				98B9239D2AB6E51900BC531F /* Medal */,
 				98B9239C2AB6E50F00BC531F /* Dalsung */,
@@ -232,6 +235,22 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		98B923BE2AB6F79100BC531F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				98B923BF2AB6F79500BC531F /* View */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		98B923BF2AB6F79500BC531F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98B923C12AB6F7AA00BC531F /* AlertView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,6 +330,7 @@
 				988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */,
 				98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */,
 				98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */,
+				98B923C22AB6F7AA00BC531F /* AlertView.swift in Sources */,
 				98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */,
 				988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */,
 			);

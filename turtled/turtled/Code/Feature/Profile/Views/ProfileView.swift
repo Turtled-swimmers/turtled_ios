@@ -76,12 +76,6 @@ struct ProfileView: View {
     }
 }
 
-struct AlertSettingView: View {
-    var body: some View {
-        Text("알림 설정 화면")
-    }
-}
-
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
