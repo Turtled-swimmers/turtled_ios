@@ -27,6 +27,8 @@
 		98B923CA2AB6FDB000BC531F /* CalendarWeekSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923C92AB6FDAF00BC531F /* CalendarWeekSwiftUIView.swift */; };
 		98B923CD2AB6FDD200BC531F /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923CC2AB6FDD200BC531F /* CircularProgressBar.swift */; };
 		98B923CF2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923CE2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift */; };
+		98B923D12AB704E900BC531F /* StretchingSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923D02AB704E900BC531F /* StretchingSessionModel.swift */; };
+		98B923D42AB71EEC00BC531F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923D32AB71EEC00BC531F /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		98B923C92AB6FDAF00BC531F /* CalendarWeekSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekSwiftUIView.swift; sourceTree = "<group>"; };
 		98B923CC2AB6FDD200BC531F /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		98B923CE2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayHeaderSwiftUIView.swift; sourceTree = "<group>"; };
+		98B923D02AB704E900BC531F /* StretchingSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchingSessionModel.swift; sourceTree = "<group>"; };
+		98B923D32AB71EEC00BC531F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 		98B9239B2AB6E1AB00BC531F /* Utiles */ = {
 			isa = PBXGroup;
 			children = (
+				98B923D22AB71EDD00BC531F /* Extension */,
 			);
 			path = Utiles;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				98B923C52AB6FCE000BC531F /* DayModel.swift */,
+				98B923D02AB704E900BC531F /* StretchingSessionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +273,14 @@
 				98B923C12AB6F7AA00BC531F /* AlertView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		98B923D22AB71EDD00BC531F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				98B923D32AB71EEC00BC531F /* Date.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +360,7 @@
 				98B923CA2AB6FDB000BC531F /* CalendarWeekSwiftUIView.swift in Sources */,
 				98B923A52AB6E54100BC531F /* MedalView.swift in Sources */,
 				98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */,
+				98B923D42AB71EEC00BC531F /* Date.swift in Sources */,
 				988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */,
 				98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */,
 				98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */,
@@ -355,6 +370,7 @@
 				98B923C22AB6F7AA00BC531F /* AlertView.swift in Sources */,
 				98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */,
 				98B923C82AB6FD9700BC531F /* CalendarHeaderChangeMonthSwiftUIView.swift in Sources */,
+				98B923D12AB704E900BC531F /* StretchingSessionModel.swift in Sources */,
 				988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */,
 				98B923CD2AB6FDD200BC531F /* CircularProgressBar.swift in Sources */,
 			);
@@ -495,6 +511,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -526,6 +543,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

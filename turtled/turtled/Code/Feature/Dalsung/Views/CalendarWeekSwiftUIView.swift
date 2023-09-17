@@ -10,7 +10,7 @@ struct CalendarWeekSwiftUIView: View {
     @Binding var selectedDate: DayModel?
 
     var body: some View {
-        HStack(spacing:24) {
+        HStack(spacing:22) {
                    ForEach(weekDates, id: \.self) { date in
                        let isSelectedDate = date.dayText == selectedDate?.dayText && date.date.month == selectedDate?.date.month
                        if isLastWeek() && (Int(date.date.day)! <= 7 || date.date.day == "1") {

@@ -1,18 +1,14 @@
-//
-//  DalsungView.swift
-//  turtled
-//
-//  Created by 서희찬 on 2023/09/17.
-//
-
 import SwiftUI
 
 struct DalsungView: View {
+   
+    
     var body: some View {
-        VStack{
+        VStack(spacing: 0) {
             CalendarView()
         }
     }
+
 }
 
 struct DalsungView_Previews: PreviewProvider {

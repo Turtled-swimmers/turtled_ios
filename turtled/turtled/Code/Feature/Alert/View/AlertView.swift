@@ -15,6 +15,9 @@ struct AlertSettingView: View {
             alertToggle(title: "알림 설정", subtitle: "등록한 주기별 알림", isOn: $AlertOn, key: "ateAlert")
             Spacer()
         }.padding(.horizontal,32)
+            .toolbar(.hidden, for: .tabBar)
+
+
     }
     
     // 알림토글

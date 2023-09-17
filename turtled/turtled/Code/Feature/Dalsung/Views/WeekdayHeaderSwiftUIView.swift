@@ -12,6 +12,7 @@ struct WeekdayHeaderSwiftUIView: View {
                     .foregroundColor(weekdayColor(for: symbol))
             }
         }
+        .padding(.horizontal,20)
     }
     
     func weekdayColor(for weekdayText: String) -> Color {

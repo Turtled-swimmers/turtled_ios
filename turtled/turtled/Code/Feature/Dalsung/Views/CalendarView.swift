@@ -3,6 +3,14 @@ import SwiftUI
 //MARK: - CalendarView : 달력 뷰
 struct CalendarView: View {
     
+    let stretchingSessions: [StretchingSessionModel] = [
+        StretchingSessionModel(sessionNumber: 1, startTime: "10:00", endTime: "11:00", timerInterval: "15분", stretchingCount: 5),
+        StretchingSessionModel(sessionNumber: 2, startTime: "11:30", endTime: "12:30", timerInterval: "20분", stretchingCount: 4),
+        StretchingSessionModel(sessionNumber: 3, startTime: "14:00", endTime: "15:00", timerInterval: "10분", stretchingCount: 6),
+        StretchingSessionModel(sessionNumber: 4, startTime: "16:00", endTime: "17:00", timerInterval: "15분", stretchingCount: 5),
+        StretchingSessionModel(sessionNumber: 5, startTime: "18:00", endTime: "19:00", timerInterval: "20분", stretchingCount: 3)
+    ]
+    
     /* --------------- State --------------- */
     //currentDate 현재 일자를 불러온다.
     @State private var currentDate = Date()
@@ -81,7 +89,6 @@ struct CalendarView: View {
     
 //MARK: - View Body
     var body: some View {
-        ScrollView{
             
         /* --------------- 달력 뷰 --------------- */
         VStack(spacing: 16) {
@@ -113,8 +120,50 @@ struct CalendarView: View {
                 }
             }
             .padding(.top, 20)
-        }
-        .padding(.horizontal,20)
+            
+            ScrollView(showsIndicators: false) {
+                ForEach(stretchingSessions, id: \.sessionNumber) { session in
+                    
+                        HStack{
+                            VStack(alignment: .leading,spacing: 10) {
+                                Text("#\(session.sessionNumber) ")
+                                    .font(Font.custom("SUIT", size: 16))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(red: 0.12, green: 0.13, blue: 0.14))
+                                
+
+                                Text("시작 시간: \(session.startTime)")
+                                    .font(Font.custom("SUIT", size: 14))
+                                    .foregroundColor(Color(red: 0.44, green: 0.45, blue: 0.48))
+
+
+                                Text("종료 시간: \(session.endTime)")
+                                    .font(Font.custom("SUIT", size: 14))
+                                    .foregroundColor(Color(red: 0.44, green: 0.45, blue: 0.48))
+
+
+                                Text("타이머 주기: \(session.timerInterval)")
+                                    .font(Font.custom("SUIT", size: 14))
+                                    .foregroundColor(Color(red: 0.44, green: 0.45, blue: 0.48))
+
+
+                                Text("스트레칭 횟수: \(session.stretchingCount) 번")
+                                    .font(Font.custom("SUIT", size: 14))
+                                    .foregroundColor(Color(red: 0.44, green: 0.45, blue: 0.48))
+
+
+                            }.padding(.horizontal,10)
+                            Spacer()
+                    }
+                    .padding(.vertical, 10)
+                    .frame(maxWidth: .infinity)
+                    .background(Color(red: 0.97, green: 0.98, blue: 1))
+                    .cornerRadius(8)
+                    .padding(.bottom, 10)
+                }
+            }
+            .padding(.top, 10)
+            .padding(.horizontal,30)
         }.onAppear {
             currentWeekIndex = findCurrentWeekIndex()
         }
@@ -122,27 +171,6 @@ struct CalendarView: View {
     }
 }
 
-
-
-//MARK: - Date Extension
-extension Date {
-    var day: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d"
-        return formatter.string(from: self)
-    }
-    var year: Int {
-        return Calendar.current.component(.year, from: self)
-    }
-    
-    var month: Int {
-        return Calendar.current.component(.month, from: self)
-    }
-    
-    var SingleDay: Int {
-        return Calendar.current.component(.day, from: self)
-    }
-}
 //MARK: -CalendarView_Previews
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {

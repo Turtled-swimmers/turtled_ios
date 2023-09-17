@@ -37,9 +37,6 @@ struct CircularProgressBar: View {
                                .foregroundColor(weekdayColor(for: weekDates))
                                .font(Font.custom("SUIT", size: 12).weight(.bold))
                        }
-                       
-                       
-                       
                    }
                }
            }
