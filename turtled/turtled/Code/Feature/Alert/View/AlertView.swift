@@ -1,13 +1,8 @@
-//
-//  AlertView.swift
-//  turtled
-//
-//  Created by 서희찬 on 2023/09/17.
-//
-
 import SwiftUI
 
 struct AlertSettingView: View {
+    @State private var isToolbarHidden = true
+
     @State private var AlertOn: Bool = UserDefaults.standard.bool(forKey: "ateAlert")
     
     var body: some View {
@@ -15,9 +10,8 @@ struct AlertSettingView: View {
             alertToggle(title: "알림 설정", subtitle: "등록한 주기별 알림", isOn: $AlertOn, key: "ateAlert")
             Spacer()
         }.padding(.horizontal,32)
-            .toolbar(.hidden, for: .tabBar)
-
-
+//            .toolbar(.hidden, for: .tabBar)
+        
     }
     
     // 알림토글

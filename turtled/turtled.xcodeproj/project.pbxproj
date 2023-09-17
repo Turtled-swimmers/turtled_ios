@@ -29,6 +29,7 @@
 		98B923CF2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923CE2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift */; };
 		98B923D12AB704E900BC531F /* StretchingSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923D02AB704E900BC531F /* StretchingSessionModel.swift */; };
 		98B923D42AB71EEC00BC531F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923D32AB71EEC00BC531F /* Date.swift */; };
+		98B923D82AB7344E00BC531F /* CalendarTodoHeaderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923D72AB7344E00BC531F /* CalendarTodoHeaderSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		98B923CE2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayHeaderSwiftUIView.swift; sourceTree = "<group>"; };
 		98B923D02AB704E900BC531F /* StretchingSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchingSessionModel.swift; sourceTree = "<group>"; };
 		98B923D32AB71EEC00BC531F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		98B923D72AB7344E00BC531F /* CalendarTodoHeaderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTodoHeaderSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 				98B923C92AB6FDAF00BC531F /* CalendarWeekSwiftUIView.swift */,
 				98B923CC2AB6FDD200BC531F /* CircularProgressBar.swift */,
 				98B923CE2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift */,
+				98B923D72AB7344E00BC531F /* CalendarTodoHeaderSwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				98B923D42AB71EEC00BC531F /* Date.swift in Sources */,
 				988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */,
 				98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */,
+				98B923D82AB7344E00BC531F /* CalendarTodoHeaderSwiftUIView.swift in Sources */,
 				98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */,
 				98B923C42AB6FCBC00BC531F /* CalendarView.swift in Sources */,
 				98B923C62AB6FCE000BC531F /* DayModel.swift in Sources */,
@@ -501,10 +505,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"turtled/Preview Content\"";
-				DEVELOPMENT_TEAM = Y2M459JK4X;
+				DEVELOPMENT_TEAM = 4HZC2Z3WWS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = turtled/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Turtled;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -533,10 +538,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"turtled/Preview Content\"";
-				DEVELOPMENT_TEAM = Y2M459JK4X;
+				DEVELOPMENT_TEAM = 4HZC2Z3WWS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = turtled/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Turtled;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

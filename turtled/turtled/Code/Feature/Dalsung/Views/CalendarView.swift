@@ -122,6 +122,9 @@ struct CalendarView: View {
             .padding(.top, 20)
             
             ScrollView(showsIndicators: false) {
+                // 선택한 날짜
+                CalendarTodoHeaderSwiftUIView(selectedDate: $selectedDate)
+                
                 ForEach(stretchingSessions, id: \.sessionNumber) { session in
                     
                         HStack{
@@ -130,7 +133,6 @@ struct CalendarView: View {
                                     .font(Font.custom("SUIT", size: 16))
                                     .fontWeight(.bold)
                                     .foregroundColor(Color(red: 0.12, green: 0.13, blue: 0.14))
-                                
 
                                 Text("시작 시간: \(session.startTime)")
                                     .font(Font.custom("SUIT", size: 14))

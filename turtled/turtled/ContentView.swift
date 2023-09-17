@@ -3,13 +3,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedTab = 0
     
+//     UITabView 색상 초기화
     init() {
     UITabBar.appearance().backgroundColor = UIColor.white
 
     }
-
-
-    
     var body: some View {
         TabView(selection: $selectedTab) {
 

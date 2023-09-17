@@ -72,6 +72,7 @@ struct ProfileView: View {
                 .accentColor(Color(red: 0.12, green: 0.13, blue: 0.14))
             }
             .navigationTitle("프로필")
+
         }
     }
 }

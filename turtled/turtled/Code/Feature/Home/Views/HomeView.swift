@@ -1,15 +1,29 @@
-//
-//  HomeView.swift
-//  turtled
-//
-//  Created by 서희찬 on 2023/09/17.
-//
-
 import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                // Your content here
+            }
+            
+            .navigationBarItems(
+                leading: Text("Turtled")
+                    .font(.largeTitle) // Apply a custom font size (you can adjust this as needed)
+                    .fontWeight(.bold)
+                    .padding(.top, 90.0),
+                
+                trailing:
+                    Button(action: {
+                        // Action for the right-side button (e.g., for showing a notification)
+                    }) {
+                        Image("Combined-Shape")
+                            .resizable()
+                            .frame(width: 20, height: 23)
+                            .padding(.top, 90.0)
+                    }
+            )
+        }
     }
 }
 
