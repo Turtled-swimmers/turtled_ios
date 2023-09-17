@@ -9,7 +9,7 @@ struct MedalView: View {
     ]
     var body: some View {
         NavigationView{
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 ForEach(medals) { medal in
                     // 메달 리스트
                     HStack{
@@ -44,6 +44,7 @@ struct MedalView: View {
                     Divider()
                 }
                 .padding(.horizontal, 24.0)
+                .padding(.top,20)
                 // 아래여백
                 Spacer()
             } .navigationTitle("달성") // Navigation Title 설정

@@ -16,6 +16,10 @@
 		98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A82AB6E56200BC531F /* DalsungView.swift */; };
 		98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923AB2AB6E57500BC531F /* HomeView.swift */; };
 		98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923AE2AB6EDD300BC531F /* MedalModel.swift */; };
+		98B923BA2AB6F35F00BC531F /* SUIT-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B62AB6F35F00BC531F /* SUIT-SemiBold.otf */; };
+		98B923BB2AB6F35F00BC531F /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B72AB6F35F00BC531F /* SUIT-Regular.otf */; };
+		98B923BC2AB6F35F00BC531F /* SUIT-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B82AB6F35F00BC531F /* SUIT-Bold.otf */; };
+		98B923BD2AB6F35F00BC531F /* SUIT-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98B923B92AB6F35F00BC531F /* SUIT-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,11 @@
 		98B923A82AB6E56200BC531F /* DalsungView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalsungView.swift; sourceTree = "<group>"; };
 		98B923AB2AB6E57500BC531F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		98B923AE2AB6EDD300BC531F /* MedalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalModel.swift; sourceTree = "<group>"; };
+		98B923B02AB6F30E00BC531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		98B923B62AB6F35F00BC531F /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
+		98B923B72AB6F35F00BC531F /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
+		98B923B82AB6F35F00BC531F /* SUIT-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.otf"; sourceTree = "<group>"; };
+		98B923B92AB6F35F00BC531F /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +70,7 @@
 		988CE5062AB3249100EADBA4 /* turtled */ = {
 			isa = PBXGroup;
 			children = (
+				98B923B02AB6F30E00BC531F /* Info.plist */,
 				98B923962AB6E12000BC531F /* Code */,
 				98B923952AB6E11100BC531F /* Resources */,
 				988CE5072AB3249100EADBA4 /* turtledApp.swift */,
@@ -81,6 +91,7 @@
 		98B923952AB6E11100BC531F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				98B923B12AB6F34300BC531F /* Fonts */,
 				988CE50B2AB3249200EADBA4 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -210,6 +221,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		98B923B12AB6F34300BC531F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				98B923B82AB6F35F00BC531F /* SUIT-Bold.otf */,
+				98B923B92AB6F35F00BC531F /* SUIT-Medium.otf */,
+				98B923B72AB6F35F00BC531F /* SUIT-Regular.otf */,
+				98B923B62AB6F35F00BC531F /* SUIT-SemiBold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -268,8 +290,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B923BA2AB6F35F00BC531F /* SUIT-SemiBold.otf in Resources */,
 				988CE50F2AB3249200EADBA4 /* Preview Assets.xcassets in Resources */,
+				98B923BC2AB6F35F00BC531F /* SUIT-Bold.otf in Resources */,
+				98B923BD2AB6F35F00BC531F /* SUIT-Medium.otf in Resources */,
 				988CE50C2AB3249200EADBA4 /* Assets.xcassets in Resources */,
+				98B923BB2AB6F35F00BC531F /* SUIT-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +444,7 @@
 				DEVELOPMENT_TEAM = Y2M459JK4X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = turtled/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,6 +475,7 @@
 				DEVELOPMENT_TEAM = Y2M459JK4X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = turtled/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
