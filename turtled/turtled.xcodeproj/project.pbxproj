@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		980A7F602AB76B3F003E8DDC /* AlertBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F5F2AB76B3F003E8DDC /* AlertBellView.swift */; };
+		980A7F622AB77244003E8DDC /* QuotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F612AB77244003E8DDC /* QuotesData.swift */; };
 		988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988CE5072AB3249100EADBA4 /* turtledApp.swift */; };
 		988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988CE5092AB3249100EADBA4 /* ContentView.swift */; };
 		988CE50C2AB3249200EADBA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988CE50B2AB3249200EADBA4 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		980A7F5F2AB76B3F003E8DDC /* AlertBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBellView.swift; sourceTree = "<group>"; };
+		980A7F612AB77244003E8DDC /* QuotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesData.swift; sourceTree = "<group>"; };
 		988CE5042AB3249100EADBA4 /* turtled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = turtled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		988CE5072AB3249100EADBA4 /* turtledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = turtledApp.swift; sourceTree = "<group>"; };
 		988CE5092AB3249100EADBA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +88,22 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		980A7F592AB76AB0003E8DDC /* AlertBell */ = {
+			isa = PBXGroup;
+			children = (
+				980A7F5E2AB76B31003E8DDC /* View */,
+			);
+			path = AlertBell;
+			sourceTree = "<group>";
+		};
+		980A7F5E2AB76B31003E8DDC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				980A7F5F2AB76B3F003E8DDC /* AlertBellView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		988CE4FB2AB3249100EADBA4 = {
@@ -144,6 +164,7 @@
 		98B923972AB6E12400BC531F /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				980A7F592AB76AB0003E8DDC /* AlertBell */,
 				980A7F572AB76756003E8DDC /* Login */,
 				98B923BE2AB6F79100BC531F /* Alert */,
 				98B9239E2AB6E51D00BC531F /* Profile */,
@@ -174,6 +195,7 @@
 		98B9239A2AB6E13600BC531F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				980A7F612AB77244003E8DDC /* QuotesData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,10 +410,12 @@
 				98B923C62AB6FCE000BC531F /* DayModel.swift in Sources */,
 				98B923CF2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift in Sources */,
 				98B923C22AB6F7AA00BC531F /* AlertView.swift in Sources */,
+				980A7F622AB77244003E8DDC /* QuotesData.swift in Sources */,
 				98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */,
 				98B923C82AB6FD9700BC531F /* CalendarHeaderChangeMonthSwiftUIView.swift in Sources */,
 				98B923D12AB704E900BC531F /* StretchingSessionModel.swift in Sources */,
 				988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */,
+				980A7F602AB76B3F003E8DDC /* AlertBellView.swift in Sources */,
 				98B923CD2AB6FDD200BC531F /* CircularProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

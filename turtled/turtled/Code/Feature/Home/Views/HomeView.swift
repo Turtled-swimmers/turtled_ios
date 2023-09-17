@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    /* ------------ STATE ------------ */
     @State private var timeInterval: Int = 10
     @State private var timer: Timer?
     @State private var cycles: Int = 0
@@ -9,64 +11,94 @@ struct HomeView: View {
     @State private var progress: Double = 0.0
     @State private var secondsElapsed: Int = 0
 
+    
+    @State private var isTurtle1 = true  // 이미지를 전환하기 위한 새로운 @State 변수
+    @State private var animationTimer: Timer?
+    
+    @State private var isAlertBellViewActive: Bool = false
+
+    // 인용문
+    @State private var quoteIndex: Int = Int.random(in: 0..<QuotesData.QuotesList.count)
+    
+    @State private var quoteChangeTimer: Timer?
+
+    
+
     var body: some View {
         NavigationView {
             VStack {
                 Spacer()
-                /*  ---------------- title  ---------------- */
-                Text("몇 분 주기로 알림 받으실래요?")
-                    .font(
-                        Font.custom("SUIT", size: 18)
-                            .weight(.bold)
-                    )
-                    .kerning(0.08)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.black)
-                    .frame(width: 343, height: 22, alignment: .top)
-                /*  ---------------- setting time  ---------------- */
-                HStack {
-                    Button(action: {
-                        if !isTimerRunning {
-                            timeInterval = max(timeInterval - 1, 1)
-                        }
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 30, height: 30)
-                    }
-                    .disabled(isTimerRunning)
-                    Text("\(timeInterval):00")
-                        .font(
-                        Font.custom("SUIT", size: 20)
-                        .weight(.bold)
-                        )
+                if isTimerRunning {
+                    Text(QuotesData.QuotesList[quoteIndex])
+                        .font(Font.custom("SUIT", size: 18).weight(.bold))
+                        .kerning(0.08)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(Color(red: 0.59, green: 0.8, blue: 0.7))
-                        .padding(.horizontal, 25.0)
-                        .padding(.vertical, 10.0)
-                        .background(.white)
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .inset(by: 1.5)
-                                .stroke(Color(red: 0.59, green: 0.8, blue: 0.7), lineWidth: 3)
-                        )
-                    
-                    
-                    Button(action: {
-                        if !isTimerRunning {
-                            timeInterval = min(timeInterval + 1, 30)
+                        .foregroundColor(.black)
+                        .onAppear {
+                            setupQuoteChangeTimer()
                         }
-                    }) {
-                        Image(systemName: "chevron.right")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 30, height: 30)
-                    }
-                    .disabled(isTimerRunning)
+                        .onDisappear {
+                            stopQuoteChangeTimer()
+                        }
+                    Text("\(timeInterval)분씩, \(cycles)번 하셨습니다!")
+                        .font(Font.custom("SUIT", size: 18).weight(.bold))
+                        .kerning(0.08)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.black)
+                        .padding(.vertical,30)
+                } else {
+                    Text("몇 분 주기로 알림 받으실래요?")
+                        .font(Font.custom("SUIT", size: 18).weight(.bold))
+                        .kerning(0.08)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.black)
+                    HStack {
+                        Button(action: {
+                            if !isTimerRunning {
+                                timeInterval = max(timeInterval - 1, 1)
+                            }
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
+                        }
+                        .disabled(isTimerRunning)
+                        
+                        
+                        Text("\(timeInterval):00")
+                            .font(
+                            Font.custom("SUIT", size: 20)
+                            .weight(.bold)
+                            )
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(Color(red: 0.59, green: 0.8, blue: 0.7))
+                            .padding(.horizontal, 25.0)
+                            .padding(.vertical, 10.0)
+                            .background(.white)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .inset(by: 1.5)
+                                    .stroke(Color(red: 0.59, green: 0.8, blue: 0.7), lineWidth: 3)
+                            )
+                        
+                        Button(action: {
+                            if !isTimerRunning {
+                                timeInterval = min(timeInterval + 1, 30)
+                            }
+                        }) {
+                            Image(systemName: "chevron.right")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
+                        }
+                        .disabled(isTimerRunning)
 
-                }.padding(.vertical,20)
+                    }.padding(.vertical,20)
+                }
+                
+
                 
                 /*  ---------------- Circle  ---------------- */
 //                Text("Alert cycles: \(cycles)")
@@ -83,9 +115,16 @@ struct HomeView: View {
                         .stroke(Color(red: 0.59, green: 0.8, blue: 0.7), lineWidth: 5)
                         .rotationEffect(.degrees(-90))
                         .padding(.horizontal,40)
-                    Image("turtle")
-                        .resizable()
-                        .frame(width: 250, height: 250)
+                    
+                    if isTurtle1 {
+                             Image("turtle")
+                                 .resizable()
+                                 .frame(width: 250, height: 250)
+                         } else {
+                             Image("turtle2")
+                                 .resizable()
+                                 .frame(width: 250, height: 200)
+                         }
                     // timer
                     Text(timeString(from: secondsElapsed))
                         .font(
@@ -106,18 +145,20 @@ struct HomeView: View {
                         .padding(.bottom, 270) // 여기에 톱 패딩을 추가하여 텍스트를 상단으로 더 올립니다.
 
                 }
+                .onDisappear {
+                    stopAnimationTimer()
+                }
                 Spacer()
-                
-                
-                
-//MARK: - Button
+//MARK: - 스트레칭 시작 그만 Button
                 Button(action: {
                     if isTimerRunning {
+                            stopAnimationTimer()
                             timer?.invalidate()
                             secondsElapsed = 0  // Reset the seconds elapsed
                             progress = 0.0  // Reset the progress
                             showAlert = true
                         } else {
+                            startAnimationTimer()
                             startTimer()
                         }
                         
@@ -140,7 +181,9 @@ struct HomeView: View {
                 .padding(.horizontal, 20)  // Add 20 margin on both
                 .padding(.bottom,50)
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Notification"), message: Text("You stretched \(cycles) times!"), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Notification"), message: Text("\(timeInterval)분씩, \(cycles)번 하셨습니다!"),  dismissButton: .default(Text("확인")) {
+                        cycles = 0
+                    })
                 }
             }
             .navigationBarItems(
@@ -150,24 +193,26 @@ struct HomeView: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0.59, green: 0.8, blue: 0.7))
                         .padding(.top, 90.0)
-                    
+
                     Text("urtled")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.top, 90.0)
-                },
-
-                
-                trailing:
-                    Button(action: {
-                        // Action for the right-side button
-                    }) {
-                        Image("Combined-Shape")
-                            .resizable()
-                            .frame(width: 20, height: 23)
-                            .padding(.top, 90.0)
-                    }
-            )
+                }
+                )
+//
+//
+//                trailing:
+//
+//                    Button(action: {
+//
+//                    }) {
+//                        Image("Combined-Shape")
+//                            .resizable()
+//                            .frame(width: 20, height: 23)
+//                            .padding(.top, 90.0)
+//                    }
+//            )
         }
     }
     
@@ -183,6 +228,7 @@ struct HomeView: View {
         timer?.invalidate()
         secondsElapsed = 0
         progress = 0.0
+        startAnimationTimer()
 
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             secondsElapsed += 1
@@ -195,6 +241,37 @@ struct HomeView: View {
                 progress = 0.0
             }
         }
+    }
+    
+    //MARK: - 애니메이션 타이머
+    // 에니메이션 시작 타이머
+    func startAnimationTimer() {
+        animationTimer?.invalidate()
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            withAnimation(.linear(duration: 1.0)) {
+                isTurtle1.toggle()
+            }
+        }
+    }
+    
+    // 에니메이션 멈추기 타이머
+    func stopAnimationTimer() {
+        animationTimer?.invalidate()
+        animationTimer = nil
+    }
+    
+    //MARK: - 인용문 타이머
+    // 인용 시작
+    private func setupQuoteChangeTimer() {
+         quoteChangeTimer?.invalidate()
+         quoteChangeTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+             quoteIndex = Int.random(in: 0..<QuotesData.QuotesList.count)
+         }
+     }
+    // 인용 종료 타이머
+    private func stopQuoteChangeTimer() {
+        quoteChangeTimer?.invalidate()
+        quoteChangeTimer = nil
     }
 }
 
