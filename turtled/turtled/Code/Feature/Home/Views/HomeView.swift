@@ -157,6 +157,21 @@ struct HomeView: View {
                             secondsElapsed = 0  // Reset the seconds elapsed
                             progress = 0.0  // Reset the progress
                             showAlert = true
+                        
+                        let endBody: [String: Any] = [
+                            "device_token": "DEVICE_TOKEN",
+                            "end_time": "\(Date())", // or any appropriate format
+                            "count": cycles
+                        ]
+
+                        makePOSTRequest(to: "http://ec2-15-164-95-242.ap-northeast-2.compute.amazonaws.com:8000/api/v1/timers/done", with: endBody) { success in
+                            if success {
+                                print("Timer stop data sent successfully!")
+                            } else {
+                                print("Failed to send timer stop data.")
+                            }
+                        }
+                        
                         } else {
                             startAnimationTimer()
                             startTimer()
@@ -200,21 +215,36 @@ struct HomeView: View {
                         .padding(.top, 90.0)
                 }
                 )
-//
-//
-//                trailing:
-//
-//                    Button(action: {
-//
-//                    }) {
-//                        Image("Combined-Shape")
-//                            .resizable()
-//                            .frame(width: 20, height: 23)
-//                            .padding(.top, 90.0)
-//                    }
-//            )
         }
     }
+    
+    func makePOSTRequest(to url: String, with body: [String: Any], completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: url) else {
+            completion(false)
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                print("Error: \(error!.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }.resume()
+    }
+
     
 //MARK: - 시간 설정
     func timeString(from totalSeconds: Int) -> String {
@@ -225,6 +255,26 @@ struct HomeView: View {
     
 //MARK: - 타이머 시작
     func startTimer() {
+        
+        let body: [String: Any] = [
+            "device_token": "DEVICE_TOKEN",
+            "repeat_cycle": 0,
+            "start_time": "\(Date())"
+        ]
+        
+        // 타이머 시작할때 보내기
+        if(cycles == 0){
+            makePOSTRequest(to:"http://ec2-15-164-95-242.ap-northeast-2.compute.amazonaws.com:8000/api/v1/timers/alarm", with: body) { success in
+                if success {
+                    print("Timer start data sent successfully!")
+                } else {
+                    print("Failed to send timer start data.")
+                }
+            }
+        }
+
+        
+        
         timer?.invalidate()
         secondsElapsed = 0
         progress = 0.0
@@ -236,9 +286,28 @@ struct HomeView: View {
             progress = Double(secondsElapsed) / Double(totalSeconds)
 
             if secondsElapsed >= totalSeconds {
+                
                 secondsElapsed = 0
                 cycles += 1
                 progress = 0.0
+                
+                let messageBody: [String: Any] = [
+                    "message": "",
+                    "notify": [
+                        "title": "",
+                        "body": ""
+                    ],
+                    "device_token": "DEVICE_TOKEN"
+                ]
+
+                makePOSTRequest(to: "http://ec2-15-164-95-242.ap-northeast-2.compute.amazonaws.com:8000/api/v1/timers/message", with: messageBody) { success in
+                    if success {
+                        print("Timer interval completion data sent successfully!")
+                    } else {
+                        print("Failed to send timer interval completion data.")
+                    }
+                }
+                
             }
         }
     }
