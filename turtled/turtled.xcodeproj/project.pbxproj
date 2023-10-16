@@ -14,6 +14,7 @@
 		980A7F6C2AB77D97003E8DDC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F6B2AB77D97003E8DDC /* UserModel.swift */; };
 		980A7F702AB782BD003E8DDC /* GreenHorizontalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F6F2AB782BD003E8DDC /* GreenHorizontalButtonView.swift */; };
 		980A7F722AB78766003E8DDC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F712AB78766003E8DDC /* WebView.swift */; };
+		983D38132ADC5E5B00C52B60 /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D38122ADC5E5B00C52B60 /* MeasurementView.swift */; };
 		988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988CE5072AB3249100EADBA4 /* turtledApp.swift */; };
 		988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988CE5092AB3249100EADBA4 /* ContentView.swift */; };
 		988CE50C2AB3249200EADBA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988CE50B2AB3249200EADBA4 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		980A7F6B2AB77D97003E8DDC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		980A7F6F2AB782BD003E8DDC /* GreenHorizontalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenHorizontalButtonView.swift; sourceTree = "<group>"; };
 		980A7F712AB78766003E8DDC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		983D38122ADC5E5B00C52B60 /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
 		988CE5042AB3249100EADBA4 /* turtled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = turtled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		988CE5072AB3249100EADBA4 /* turtledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = turtledApp.swift; sourceTree = "<group>"; };
 		988CE5092AB3249100EADBA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,30 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		983D380F2ADC5E1F00C52B60 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				983D38112ADC5E4800C52B60 /* Models */,
+				983D38102ADC5E4300C52B60 /* Views */,
+			);
+			path = Measurement;
+			sourceTree = "<group>";
+		};
+		983D38102ADC5E4300C52B60 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				983D38122ADC5E5B00C52B60 /* MeasurementView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		983D38112ADC5E4800C52B60 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		988CE4FB2AB3249100EADBA4 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +213,7 @@
 		98B923972AB6E12400BC531F /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				983D380F2ADC5E1F00C52B60 /* Measurement */,
 				980A7F592AB76AB0003E8DDC /* AlertBell */,
 				980A7F572AB76756003E8DDC /* Auth */,
 				98B923BE2AB6F79100BC531F /* Alert */,
@@ -424,6 +451,7 @@
 				98B923CA2AB6FDB000BC531F /* CalendarWeekSwiftUIView.swift in Sources */,
 				98B923A52AB6E54100BC531F /* MedalView.swift in Sources */,
 				98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */,
+				983D38132ADC5E5B00C52B60 /* MeasurementView.swift in Sources */,
 				98B923D42AB71EEC00BC531F /* Date.swift in Sources */,
 				988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */,
 				98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */,

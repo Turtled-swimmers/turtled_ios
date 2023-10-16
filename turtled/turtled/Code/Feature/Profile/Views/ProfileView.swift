@@ -16,7 +16,7 @@ struct ProfileView: View {
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
-                    Text("email@naver.com")
+                    Text("seochan@gmail.com")
                         .font(
                             Font.custom("SUIT", size: 18)
                                 .weight(.regular)
