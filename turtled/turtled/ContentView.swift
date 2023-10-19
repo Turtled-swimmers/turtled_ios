@@ -2,12 +2,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedTab = 0
-    
+    @EnvironmentObject var uViewModel: UserViewModel
+
+
 //     UITabView 색상 초기화
     init() {
     UITabBar.appearance().backgroundColor = UIColor.white
 
     }
+
+
     var body: some View {
         TabView(selection: $selectedTab) {
 
@@ -18,10 +22,10 @@ struct ContentView: View {
                             .foregroundColor(selectedTab == 0 ? Color(red: 0.59, green: 0.8, blue: 0.7) : Color(red: 0.44, green: 0.45, blue: 0.48))
                     }.tag(0)
 
-                MedalView()
+                MeasurementView()
                     .tabItem {
-                        Image(selectedTab == 2 ? "medal_fill" : "medal")
-                        Text("메달")
+                        Image(selectedTab == 2 ? "film_fill" : "film")
+                        Text("측정하기")
                             .foregroundColor(selectedTab == 2 ? Color(red: 0.59, green: 0.8, blue: 0.7) : Color(red: 0.44, green: 0.45, blue: 0.48))
                     }.tag(1)
             DalsungView()
@@ -36,12 +40,18 @@ struct ContentView: View {
                         Text("프로필")
                             .foregroundColor(selectedTab == 3 ? Color(red: 0.59, green: 0.8, blue: 0.7) : Color(red: 0.44, green: 0.45, blue: 0.48))
                     }.tag(3)
+            
             }
+        .environmentObject(uViewModel)
         }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
+    static var uViewModel = UserViewModel.shared
     static var previews: some View {
         ContentView()
+            .environmentObject(uViewModel)
     }
 }
+

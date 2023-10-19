@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject private var user = User.shared
+    
     @State private var isLogin: Bool = UserDefaults.standard.bool(forKey: "isLogin")
     @State private var showMyPageView: Bool = false
     @State private var isEmailEditing: Bool = false
@@ -10,16 +10,17 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @ObservedObject private var userViewModel = UserViewModel.shared // 뷰모델 불러오기
+
+    
     private var isFormComplete: Bool {
             !email.isEmpty && !password.isEmpty
         }
     
     var body: some View {
-        NavigationView{
-            
             VStack(alignment: .leading,spacing: 10){
                 Text("이메일")
-                  .font(Font.custom("SuIT", size: 18))
+                  .font(Font.custom("SUIT", size: 18))
                   .foregroundColor(Color(red: 0.59, green: 0.8, blue: 0.7))
 
                 TextField("이메일을 입력해주세요.", text: $email)
@@ -32,7 +33,7 @@ struct LoginView: View {
                                     )
                 
                 Text("비밀번호")
-                  .font(Font.custom("SuIT", size: 18))
+                  .font(Font.custom("SUIT", size: 18))
                   .foregroundColor(Color(red: 0.59, green: 0.8, blue: 0.7))
                 SecureField("Password", text: $password)
                     .padding(.horizontal,10)
@@ -58,21 +59,17 @@ struct LoginView: View {
 
                     }.padding(.top, 10)
                 }
-                
+                        Spacer()
+                GreenHorizontalButtonView(text: "로그인", action: {
+                    userViewModel.login(email: email, password: password)
+                }, isEnabled: isFormComplete)
 
-
-                
-Spacer()
-                
-                GreenHorizontalButtonView(text: "로그인", action:
-                                    {
-                    UserDefaults.standard.set(true, forKey: "isLogin")
-                    
-                },isEnabled: isFormComplete)
             }.padding(.top,20)
-        }.navigationTitle("Login")
+            .navigationTitle("Login")
             .padding(.horizontal,20)
+            .toolbar(.hidden, for: .tabBar)
     }
+    
 }
 
 struct LoginView_Previews: PreviewProvider {
