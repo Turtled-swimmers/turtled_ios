@@ -11,7 +11,8 @@ struct LoginView: View {
     @State private var password = ""
     
     @ObservedObject private var userViewModel = UserViewModel.shared // 뷰모델 불러오기
-
+    @Environment(\.presentationMode) var presentationMode // presentationMode 추가
+    
     
     private var isFormComplete: Bool {
             !email.isEmpty && !password.isEmpty
@@ -61,7 +62,22 @@ struct LoginView: View {
                 }
                         Spacer()
                 GreenHorizontalButtonView(text: "로그인", action: {
-                    userViewModel.login(email: email, password: password)
+                    userViewModel.login(email: email, password: password){ success in
+                        DispatchQueue.main.async {
+//                            isLoading = false // Stop loading
+                            
+                            if success {
+                                // 로그인에 성공하면 현재 뷰를 pop하여 이전 화면으로 돌아감
+                                presentationMode.wrappedValue.dismiss()
+                            } else  {
+                                // Handle the error
+                                print("Registration failed")
+                            }
+                        }
+                    }
+                    
+                    
+                    
                 }, isEnabled: isFormComplete)
 
             }.padding(.top,20)

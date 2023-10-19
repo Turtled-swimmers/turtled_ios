@@ -25,6 +25,8 @@
 		988CE50C2AB3249200EADBA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988CE50B2AB3249200EADBA4 /* Assets.xcassets */; };
 		988CE50F2AB3249200EADBA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988CE50E2AB3249200EADBA4 /* Preview Assets.xcassets */; };
 		98B7F1762AE1AD170000BEB7 /* Login_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F1752AE1AD170000BEB7 /* Login_model.swift */; };
+		98B7F17A2AE1BA130000BEB7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F1792AE1BA130000BEB7 /* APIManager.swift */; };
+		98B7F17C2AE1BA510000BEB7 /* UserStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F17B2AE1BA510000BEB7 /* UserStorageManager.swift */; };
 		98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A12AB6E53100BC531F /* ProfileView.swift */; };
 		98B923A52AB6E54100BC531F /* MedalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A42AB6E54100BC531F /* MedalView.swift */; };
 		98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A82AB6E56200BC531F /* DalsungView.swift */; };
@@ -65,6 +67,8 @@
 		988CE50B2AB3249200EADBA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		988CE50E2AB3249200EADBA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		98B7F1752AE1AD170000BEB7 /* Login_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_model.swift; sourceTree = "<group>"; };
+		98B7F1792AE1BA130000BEB7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		98B7F17B2AE1BA510000BEB7 /* UserStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageManager.swift; sourceTree = "<group>"; };
 		98B923A12AB6E53100BC531F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		98B923A42AB6E54100BC531F /* MedalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalView.swift; sourceTree = "<group>"; };
 		98B923A82AB6E56200BC531F /* DalsungView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalsungView.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 		980A7F572AB76756003E8DDC /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				98B7F1782AE1B9FF0000BEB7 /* Manager */,
 				985DB50F2AE1918700634881 /* ViewModels */,
 				980A7F6A2AB77D89003E8DDC /* Models */,
 				980A7F582AB76761003E8DDC /* Views */,
@@ -217,6 +222,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		98B7F1772AE1B9F50000BEB7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		98B7F1782AE1B9FF0000BEB7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				98B7F1792AE1BA130000BEB7 /* APIManager.swift */,
+				98B7F17B2AE1BA510000BEB7 /* UserStorageManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		98B923952AB6E11100BC531F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +299,7 @@
 		98B9239B2AB6E1AB00BC531F /* Utiles */ = {
 			isa = PBXGroup;
 			children = (
+				98B7F1772AE1B9F50000BEB7 /* API */,
 				98B923D22AB71EDD00BC531F /* Extension */,
 			);
 			path = Utiles;
@@ -487,10 +509,12 @@
 				98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */,
 				983D38132ADC5E5B00C52B60 /* MeasurementView.swift in Sources */,
 				98B923D42AB71EEC00BC531F /* Date.swift in Sources */,
+				98B7F17A2AE1BA130000BEB7 /* APIManager.swift in Sources */,
 				988CE50A2AB3249100EADBA4 /* ContentView.swift in Sources */,
 				98B923AC2AB6E57500BC531F /* HomeView.swift in Sources */,
 				98B923D82AB7344E00BC531F /* CalendarTodoHeaderSwiftUIView.swift in Sources */,
 				98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */,
+				98B7F17C2AE1BA510000BEB7 /* UserStorageManager.swift in Sources */,
 				98B7F1762AE1AD170000BEB7 /* Login_model.swift in Sources */,
 				985DB5112AE1919B00634881 /* UserViewModel.swift in Sources */,
 				98B923C42AB6FCBC00BC531F /* CalendarView.swift in Sources */,

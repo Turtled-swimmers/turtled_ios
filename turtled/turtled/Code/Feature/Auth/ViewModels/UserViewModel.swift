@@ -2,97 +2,126 @@ import Foundation
 
 class UserViewModel: ObservableObject {
     @Published var user: User = User()
-    @Published var accessToken: String? // 엑세스 토큰을 저장할 프로퍼티 추가
+    @Published var accessToken: String? {
+        didSet {
+            UserStorageManager.shared.accessToken = accessToken
+        }
+    }
     
-    // 공유하기
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? = nil
     static let shared = UserViewModel()
     
-    // 로그인 메서드
-    func login(email: String, password: String) {
-        // 로그인 요청을 생성
-        let url = URL(string: "https://turtled-back.dcs-seochan99.com/api/v1/users/login/local")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        // 로그인 요청에 필요한 데이터를 생성
-        let requestBody = "email=\(email)&password=\(password)"
-        request.httpBody = requestBody.data(using: .utf8)
-        
-        // 로그인 요청을 서버로 보냄
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                do {
-                    // 서버 응답을 디코딩하여 엑세스 토큰을 추출
-                    let decoder = JSONDecoder()
-                    let responseModel = try decoder.decode(LoginResponse.self, from: data)
-                    let accessToken = responseModel.data.jwt.access_token
-                    let refreshToken = responseModel.data.jwt.refresh_token
-                    
-                    // 엑세스 토큰을 UserDefaults에 저장
-                    UserDefaults.standard.set(accessToken, forKey: "accessToken")
-                    UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
-                    
-                    // 로그인 상태를 true로 설정
-                    UserDefaults.standard.set(true, forKey: "isLogin")
-                    
-                    // 뷰모델의 엑세스 토큰 업데이트
-                    self.accessToken = accessToken
-                    
-                } catch {
-                    // 디코딩 실패 또는 다른 에러 처리
-                    print("로그인 요청 실패: \(error.localizedDescription)")
+    func signupUser(email: String, username: String, password: String, checkedPassword: String, completion: @escaping (Bool) -> Void) {
+        isLoading = true
+
+        let parameters: [String: Any] = [
+            "username": username,
+            "email": email,
+            "password": password,
+            "checked_password": checkedPassword
+        ]
+
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {
+            completion(false)
+            return
+        }
+
+        APIManager.shared.postRequest(endpoint: "/users/signup", parameters: parameters) { data, error in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                if let error = error {
+                    self.errorMessage = error.localizedDescription
+                    completion(false)
+                    return
                 }
-            } else if let error = error {
-                // 네트워크 오류 처리
-                print("네트워크 오류: \(error.localizedDescription)")
+
+                if let data = data, let httpResponse = data as? HTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 204:
+                        completion(true)
+                    case 400:
+                        self.errorMessage = "Bad Request: The server couldn't understand the request."
+                        completion(false)
+                    default:
+                        self.errorMessage = "Unknown error occurred. HTTP status code: \(httpResponse.statusCode)"
+                        completion(false)
+                    }
+                } else {
+                    self.errorMessage = "Unexpected error occurred."
+                    completion(false)
+                }
             }
-        }.resume()
+        }
     }
 
-    // 서버에서 User 정보 가져오기
+
+    
+    func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
+    
+        let requestBody = "username=\(email)&password=\(password)"
+        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        print(requestBody)
+        // Use the specialized formPostRequest for this login function
+        APIManager.shared.formPostRequest(endpoint: "/users/login/local", requestBody: requestBody, headers: headers) { data, error in
+            
+            if let data = data {
+                do {
+                    
+                    let responseModel = try JSONDecoder().decode(LoginResponse.self, from: data)
+                    self.accessToken = responseModel.data.jwt.access_token
+                    UserStorageManager.shared.refreshToken = responseModel.data.jwt.refresh_token
+                    UserStorageManager.shared.isLogin = true
+                    completion(true)
+                    
+                    // 홈으로 이동
+                    
+                    
+                    
+                } catch {
+                    print("로그인 요청 실패: \(error.localizedDescription)")
+                    completion(false)
+                }
+            } else if let error = error {
+                print("네트워크 오류: \(error.localizedDescription)")
+            }
+        }
+    }
+
+
+
     func fetchUserData() {
         guard let accessToken = self.accessToken else {
             print("No access token available")
             return
         }
+
+        // 엑세스토큰 보내기
+        let headers = ["Authorization": "Bearer \(accessToken)"]
         
-        guard let url = URL(string: "https://turtled-back.dcs-seochan99.com/api/v1/users/profile") else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        // Authorization 헤더에 Bearer 토큰 추가
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        APIManager.shared.getRequest(endpoint: "/users/profile", headers: headers) { data, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 return
             }
-            
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            do {
-                let userData = try JSONDecoder().decode(User.self, from: data)
-                DispatchQueue.main.async {
-                    self.user = userData // 받아온 데이터를 User 모델에 저장
+
+            if let data = data {
+                do {
+                    let userData = try JSONDecoder().decode(User.self, from: data)
+                    DispatchQueue.main.async {
+                        self.user = userData
+                    }
+                } catch {
+                    print("Error decoding JSON: \(error.localizedDescription)")
                 }
-            } catch {
-                print("Error decoding JSON: \(error.localizedDescription)")
             }
-        }.resume()
+        }
     }
     
-    // 로그아웃 초기화
     func logout() {
         user.nickName = ""
         user.email = ""
-        accessToken = nil // 엑세스 토큰 초기화
+        accessToken = nil
+        UserStorageManager.shared.isLogin = false
     }
 }

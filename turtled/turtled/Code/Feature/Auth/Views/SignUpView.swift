@@ -1,43 +1,18 @@
 import SwiftUI
 import Foundation
 
-// 포스트 요청
-func signupUser(email: String, username: String, password: String, checkedPassword: String, bodyData: Data, completion: @escaping (Bool) -> Void) {
-    print("호출")
-    let url = URL(string: "https://turtled-back.dcs-seochan99.com/api/v1/users/signup")!
-    
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.httpBody = bodyData
-    
-    URLSession.shared.dataTask(with: request) { (data, response, error) in
-        guard error == nil else {
-            print("Error: \(error!.localizedDescription)")
-            completion(false)
-            return
-        }
-        
-        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-            completion(true)
-        } else {
-            completion(false)
-        }
-    }.resume()
-}
-
-
-    
 struct SignUpView: View {
     @State private var email = ""
     @State private var nickname = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var shouldNavigate = false
+    @State private var isLoading = false
     
+    @ObservedObject private var userViewModel = UserViewModel.shared // 뷰모델 불러오기
     
     @Environment(\.presentationMode) var presentationMode // presentationMode 추가
-
+    
     
     
     // 체커
@@ -56,7 +31,13 @@ struct SignUpView: View {
     var body: some View {
 
               VStack(alignment: .leading, spacing: 10) {
-                  
+                  if isLoading {
+                       Spacer() // Adds space above the loader
+                       ProgressView() // This is the activity indicator in SwiftUI
+                           .scaleEffect(1.5, anchor: .center)
+                           .progressViewStyle(CircularProgressViewStyle(tint: Color("main")))
+                       Spacer() // Adds space below the loader
+                   }
                   Text("이메일")
                       .foregroundColor(Color("main"))
                   
@@ -65,7 +46,7 @@ struct SignUpView: View {
                       .padding(.vertical, 20.0)
                       .background(
                           RoundedRectangle(cornerRadius: 10)
-                              .stroke(Color(red: 0.59, green: 0.8, blue: 0.7), lineWidth: 1)
+                              .stroke(Color("main"))
                       )
                   Group{
                       Text("닉네임")
@@ -76,7 +57,7 @@ struct SignUpView: View {
                           .padding(.vertical, 20.0)
                           .background(
                               RoundedRectangle(cornerRadius: 10)
-                                  .stroke(Color(red: 0.59, green: 0.8, blue: 0.7), lineWidth: 1)
+                                .stroke(Color("main"))
                           )
                   }
                   
@@ -87,7 +68,7 @@ struct SignUpView: View {
                       .padding(.vertical, 20.0)
                       .background(
                           RoundedRectangle(cornerRadius: 10)
-                              .stroke(Color(red: 0.59, green: 0.8, blue: 0.7), lineWidth: 1)
+                            .stroke(Color("main"))
                       )
                 
                   
@@ -106,28 +87,24 @@ struct SignUpView: View {
                       Text(passwordsMatch ? "확인 완료" : "동일하지 않은 비밀번호입니다 :(")
                           .foregroundColor(passwordsMatch ? Color.green : Color.red)
                   }
-                  
+                  // chfhr qjxms
                   GreenHorizontalButtonView(text: "회원가입", action: {
-                  
-                      let bodyData: [String: Any] = [
-                                  "username": nickname,
-                                  "email": email,
-                                  "password": password,
-                                  "checked_password": confirmPassword
-                              ]
-
-                              if let jsonData = try? JSONSerialization.data(withJSONObject: bodyData) {
-                                  signupUser(email: email, username: nickname, password: password, checkedPassword: confirmPassword, bodyData: jsonData) { success in
-                                      if success {
-                                          // 회원가입에 성공하면 현재 뷰를 pop하여 이전 화면으로 돌아감
-                                          presentationMode.wrappedValue.dismiss()
-                                      }
-                                  }
-                              } else {
-                                  print("JSON 데이터 생성 실패")
+                      userViewModel.signupUser(email: email, username: nickname, password: password, checkedPassword: confirmPassword) { success in
+                          DispatchQueue.main.async {
+                              isLoading = false // Stop loading
+                              
+                              if success {
+                                  // 회원가입에 성공하면 현재 뷰를 pop하여 이전 화면으로 돌아감
+                                  presentationMode.wrappedValue.dismiss()
+                              } else  {
+                                  // Handle the error
+                                  print("Registration failed")
                               }
-                          
+                          }
+                      }
                   }, isEnabled: isFormComplete)
+
+
                   
               }
               .padding(.horizontal, 20)
