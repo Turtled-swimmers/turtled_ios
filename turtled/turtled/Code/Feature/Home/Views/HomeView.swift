@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeView: View {
     
     /* ------------ STATE ------------ */
-    @State private var timeInterval: Int = 10
+    @State private var timeInterval: Int = 30
     @State private var timer: Timer?
     @State private var cycles: Int = 0
     @State private var isTimerRunning = false
@@ -22,6 +22,8 @@ struct HomeView: View {
     
     @State private var quoteChangeTimer: Timer?
 
+
+    @ObservedObject var homeViewModel = HomeViewModel()
     
 
     var body: some View {
@@ -40,14 +42,14 @@ struct HomeView: View {
                         .onDisappear {
                             stopQuoteChangeTimer()
                         }
-                    Text("\(timeInterval)분씩, \(cycles)번 하셨습니다!")
+                    Text("\(timeInterval)초씩, \(cycles)번 하셨습니다!")
                         .font(Font.custom("SUIT", size: 18).weight(.bold))
                         .kerning(0.08)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
                         .padding(.vertical,30)
                 } else {
-                    Text("몇 분 주기로 알림 받으실래요?")
+                    Text("몇 초 주기로 알림 받으실래요?")
                         .font(Font.custom("SUIT", size: 18).weight(.bold))
                         .kerning(0.08)
                         .multilineTextAlignment(.center)
@@ -55,7 +57,7 @@ struct HomeView: View {
                     HStack {
                         Button(action: {
                             if !isTimerRunning {
-                                timeInterval = max(timeInterval - 1, 1)
+                                timeInterval = max(timeInterval - 10, 10)
                             }
                         }) {
                             Image(systemName: "chevron.left")
@@ -66,7 +68,7 @@ struct HomeView: View {
                         .disabled(isTimerRunning)
                         
                         
-                        Text("\(timeInterval):00")
+                        Text("00:\(timeInterval)")
                             .font(
                             Font.custom("SUIT", size: 20)
                             .weight(.bold)
@@ -85,7 +87,7 @@ struct HomeView: View {
                         
                         Button(action: {
                             if !isTimerRunning {
-                                timeInterval = min(timeInterval + 1, 30)
+                                timeInterval = min(timeInterval + 10, 50)
                             }
                         }) {
                             Image(systemName: "chevron.right")
@@ -101,8 +103,6 @@ struct HomeView: View {
 
                 
                 /*  ---------------- Circle  ---------------- */
-//                Text("Alert cycles: \(cycles)")
-                
 //MARK: - Circle
                 ZStack{
                     
@@ -154,25 +154,25 @@ struct HomeView: View {
                     if isTimerRunning {
                             stopAnimationTimer()
                             timer?.invalidate()
-                            secondsElapsed = 0  // Reset the seconds elapsed
-                            progress = 0.0  // Reset the progress
+                            secondsElapsed = 0
+                            progress = 0.0
                             showAlert = true
                         
-                        let endBody: [String: Any] = [
-                            "device_token": "DEVICE_TOKEN",
-                            "end_time": "\(Date())", // or any appropriate format
-                            "count": cycles
-                        ]
-
-                        makePOSTRequest(to: "http://ec2-15-164-95-242.ap-northeast-2.compute.amazonaws.com:8000/api/v1/timers/done", with: endBody) { success in
-                            if success {
-                                print("Timer stop data sent successfully!")
-                            } else {
-                                print("Failed to send timer stop data.")
+                        homeViewModel.DoneNotify(endTime: Date(), count: cycles)
+                        { success in
+                            DispatchQueue.main.async {
+                                if success {
+                                    // 회원가입에 성공하면 현재 뷰를 pop하여 이전 화면으로 돌아감
+                                    print("타이머 종료!")
+                                } else  {
+                                    // Handle the error
+                                    print("Registration failed")
+                                }
                             }
                         }
-                        
+                   
                         } else {
+                            // 타이머 시작
                             startAnimationTimer()
                             startTimer()
                         }
@@ -196,7 +196,7 @@ struct HomeView: View {
                 .padding(.horizontal, 20)  // Add 20 margin on both
                 .padding(.bottom,50)
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Notification"), message: Text("\(timeInterval)분씩, \(cycles)번 하셨습니다!"),  dismissButton: .default(Text("확인")) {
+                    Alert(title: Text("Notification"), message: Text("\(timeInterval)초씩, \(cycles)번 하셨습니다!"),  dismissButton: .default(Text("확인")) {
                         cycles = 0
                     })
                 }
@@ -217,35 +217,6 @@ struct HomeView: View {
                 )
         }
     }
-    
-    func makePOSTRequest(to url: String, with body: [String: Any], completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(false)
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil else {
-                print("Error: \(error!.localizedDescription)")
-                completion(false)
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }.resume()
-    }
-
-    
 //MARK: - 시간 설정
     func timeString(from totalSeconds: Int) -> String {
         let minutes = totalSeconds / 60
@@ -255,56 +226,49 @@ struct HomeView: View {
     
 //MARK: - 타이머 시작
     func startTimer() {
-        
-        let body: [String: Any] = [
-            "device_token": "DEVICE_TOKEN",
-            "repeat_cycle": 0,
-            "start_time": "\(Date())"
-        ]
-        
         // 타이머 시작할때 보내기
         if(cycles == 0){
-            makePOSTRequest(to:"http://ec2-15-164-95-242.ap-northeast-2.compute.amazonaws.com:8000/api/v1/timers/alarm", with: body) { success in
-                if success {
-                    print("Timer start data sent successfully!")
-                } else {
-                    print("Failed to send timer start data.")
+            homeViewModel.StartNotify(startTime: Date())
+            { success in
+                DispatchQueue.main.async {
+                    if success {
+                        // 회원가입에 성공하면 현재 뷰를 pop하여 이전 화면으로 돌아감
+                        print("타이머 스타트!")
+                    } else  {
+                        // Handle the error
+                        print("Registration failed")
+                    }
                 }
             }
         }
-
-        
-        
+            
         timer?.invalidate()
         secondsElapsed = 0
         progress = 0.0
         startAnimationTimer()
-
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             secondsElapsed += 1
-            let totalSeconds = timeInterval * 60
+            let totalSeconds = timeInterval;
             progress = Double(secondsElapsed) / Double(totalSeconds)
-
+            
+            
             if secondsElapsed >= totalSeconds {
-                
+                // 싸이클 초기화
                 secondsElapsed = 0
                 cycles += 1
                 progress = 0.0
-                
-                let messageBody: [String: Any] = [
-                    "message": "",
-                    "notify": [
-                        "title": "",
-                        "body": ""
-                    ],
-                    "device_token": "DEVICE_TOKEN"
-                ]
-
-                makePOSTRequest(to: "http://ec2-15-164-95-242.ap-northeast-2.compute.amazonaws.com:8000/api/v1/timers/message", with: messageBody) { success in
-                    if success {
-                        print("Timer interval completion data sent successfully!")
-                    } else {
-                        print("Failed to send timer interval completion data.")
+             
+                // homeViewModel.sendNotify
+                // device Token 넘겨주고 클로져로 succes체크하기
+                self.homeViewModel.sendNotify() { success in
+                    DispatchQueue.main.async {
+                        if success {
+                            print("알림 보내기!")
+                        } else  {
+                            // Handle the error
+                            print("Registration failed")
+                        }
                     }
                 }
                 
@@ -333,7 +297,7 @@ struct HomeView: View {
     // 인용 시작
     private func setupQuoteChangeTimer() {
          quoteChangeTimer?.invalidate()
-         quoteChangeTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+         quoteChangeTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
              quoteIndex = Int.random(in: 0..<QuotesData.QuotesList.count)
          }
      }

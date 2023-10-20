@@ -24,13 +24,13 @@ struct ContentView: View {
 
                 MeasurementView()
                     .tabItem {
-                        Image(selectedTab == 2 ? "film_fill" : "film")
+                        Image(selectedTab == 1 ? "film_fill" : "film")
                         Text("측정하기")
                             .foregroundColor(selectedTab == 2 ? Color(red: 0.59, green: 0.8, blue: 0.7) : Color(red: 0.44, green: 0.45, blue: 0.48))
                     }.tag(1)
             DalsungView()
                 .tabItem {
-                    Image(selectedTab == 1 ? "dalsung_fill" : "dalsung")
+                    Image(selectedTab == 2 ? "dalsung_fill" : "dalsung")
                     Text("달성")
                         .foregroundColor(selectedTab == 1 ? Color(red: 0.59, green: 0.8, blue: 0.7) : Color(red: 0.44, green: 0.45, blue: 0.48))
                 }.tag(2)

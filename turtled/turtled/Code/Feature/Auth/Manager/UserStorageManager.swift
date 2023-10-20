@@ -20,4 +20,10 @@ class UserStorageManager {
         get { return UserDefaults.standard.bool(forKey: "isLogin") }
         set { UserDefaults.standard.set(newValue, forKey: "isLogin") }
     }
+    
+    // device Token Manager
+    var deviceToken: String? {
+        get { return UserDefaults.standard.string(forKey: "deviceToken") }
+        set { UserDefaults.standard.set(newValue, forKey: "deviceToken") }
+    }
 }

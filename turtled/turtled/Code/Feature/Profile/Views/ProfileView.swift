@@ -32,8 +32,11 @@ struct ProfileView: View {
                     }else{
                         NavigationLink(destination: LoginView()) {
                             Text("로그인 하러가기")
-                                .font(.system(size: 22))
-                                .foregroundColor(Color.black)
+                                .font(.system(size: 22)
+                                      
+                                )
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("main"))
                                 
                         }
                         Divider()

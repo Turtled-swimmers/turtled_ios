@@ -27,6 +27,7 @@
 		98B7F1762AE1AD170000BEB7 /* Login_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F1752AE1AD170000BEB7 /* Login_model.swift */; };
 		98B7F17A2AE1BA130000BEB7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F1792AE1BA130000BEB7 /* APIManager.swift */; };
 		98B7F17C2AE1BA510000BEB7 /* UserStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F17B2AE1BA510000BEB7 /* UserStorageManager.swift */; };
+		98B7F1802AE203990000BEB7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7F17F2AE203990000BEB7 /* HomeViewModel.swift */; };
 		98B923A22AB6E53100BC531F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A12AB6E53100BC531F /* ProfileView.swift */; };
 		98B923A52AB6E54100BC531F /* MedalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A42AB6E54100BC531F /* MedalView.swift */; };
 		98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B923A82AB6E56200BC531F /* DalsungView.swift */; };
@@ -69,6 +70,7 @@
 		98B7F1752AE1AD170000BEB7 /* Login_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_model.swift; sourceTree = "<group>"; };
 		98B7F1792AE1BA130000BEB7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		98B7F17B2AE1BA510000BEB7 /* UserStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageManager.swift; sourceTree = "<group>"; };
+		98B7F17F2AE203990000BEB7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		98B923A12AB6E53100BC531F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		98B923A42AB6E54100BC531F /* MedalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalView.swift; sourceTree = "<group>"; };
 		98B923A82AB6E56200BC531F /* DalsungView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalsungView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		98B7F17D2AE203810000BEB7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				98B7F17F2AE203990000BEB7 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		98B923952AB6E11100BC531F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +284,7 @@
 		98B923982AB6E12700BC531F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				98B7F17D2AE203810000BEB7 /* ViewModels */,
 				98B9239A2AB6E13600BC531F /* Models */,
 				98B923992AB6E12D00BC531F /* Views */,
 			);
@@ -533,6 +544,7 @@
 				98B923D12AB704E900BC531F /* StretchingSessionModel.swift in Sources */,
 				988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */,
 				980A7F602AB76B3F003E8DDC /* AlertBellView.swift in Sources */,
+				98B7F1802AE203990000BEB7 /* HomeViewModel.swift in Sources */,
 				98B923CD2AB6FDD200BC531F /* CircularProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +680,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = turtled/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Turtled;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근을 허용하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -702,6 +715,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = turtled/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Turtled;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근을 허용하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

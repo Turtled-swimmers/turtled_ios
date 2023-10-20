@@ -72,6 +72,10 @@ extension AppDelegate: MessagingDelegate{
         let dataDict: [String: String] = ["token": fcmToken ?? ""]
 
         // Store token in Firestore For Sending Notifications From Server in Future...
+        
+        // 토큰 임의로 기기에 저장하기
+        UserStorageManager.shared.deviceToken = fcmToken ?? ""
+        
 
         print(dataDict)
 
