@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Information Property List</key>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -15,7 +17,13 @@
 		<string>SUIT-SemiBold.otf</string>
 		<string>SUIT-Medium.otf</string>
 	</array>
+    <key>NSCameraUsageDescription</key>
+    <string>카메라 사용 하실겠습니까?</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>마이크 녹음을 허용하시겠습니까?</string>
 	<key>UIBackgroundModes</key>
 	<array/>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 </dict>
 </plist>

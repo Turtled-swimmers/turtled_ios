@@ -16,6 +16,7 @@
 		980A7F702AB782BD003E8DDC /* GreenHorizontalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F6F2AB782BD003E8DDC /* GreenHorizontalButtonView.swift */; };
 		980A7F722AB78766003E8DDC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F712AB78766003E8DDC /* WebView.swift */; };
 		983D38132ADC5E5B00C52B60 /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D38122ADC5E5B00C52B60 /* MeasurementView.swift */; };
+		983FF9392AF41A5F00508F38 /* ImagesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FF9382AF41A5F00508F38 /* ImagesActions.swift */; };
 		985DB5092AE1817900634881 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 985DB5082AE1817900634881 /* FirebaseAnalytics */; };
 		985DB50B2AE1817900634881 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 985DB50A2AE1817900634881 /* FirebaseMessaging */; };
 		985DB50D2AE1824A00634881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985DB50C2AE1824A00634881 /* GoogleService-Info.plist */; };
@@ -59,6 +60,7 @@
 		980A7F6F2AB782BD003E8DDC /* GreenHorizontalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenHorizontalButtonView.swift; sourceTree = "<group>"; };
 		980A7F712AB78766003E8DDC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		983D38122ADC5E5B00C52B60 /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
+		983FF9382AF41A5F00508F38 /* ImagesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesActions.swift; sourceTree = "<group>"; };
 		985DB50C2AE1824A00634881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		985DB50E2AE1838400634881 /* turtled.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = turtled.entitlements; sourceTree = "<group>"; };
 		985DB5102AE1919B00634881 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		983D380F2ADC5E1F00C52B60 /* Measurement */ = {
 			isa = PBXGroup;
 			children = (
+				983FF9372AF41A3A00508F38 /* Actions */,
 				983D38112ADC5E4800C52B60 /* Models */,
 				983D38102ADC5E4300C52B60 /* Views */,
 			);
@@ -175,6 +178,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		983FF9372AF41A3A00508F38 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				983FF9382AF41A5F00508F38 /* ImagesActions.swift */,
+			);
+			path = Actions;
 			sourceTree = "<group>";
 		};
 		985DB50F2AE1918700634881 /* ViewModels */ = {
@@ -536,6 +547,7 @@
 				980A7F702AB782BD003E8DDC /* GreenHorizontalButtonView.swift in Sources */,
 				98B923CF2AB6FDF900BC531F /* WeekdayHeaderSwiftUIView.swift in Sources */,
 				9804583F2AE197DA0056003D /* Color.swift in Sources */,
+				983FF9392AF41A5F00508F38 /* ImagesActions.swift in Sources */,
 				98B923C22AB6F7AA00BC531F /* AlertView.swift in Sources */,
 				980A7F622AB77244003E8DDC /* QuotesData.swift in Sources */,
 				98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */,
@@ -680,6 +692,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = turtled/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Turtled;
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 허용 하시겠습니까?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근을 허용하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -715,6 +728,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = turtled/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Turtled;
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 허용 하시겠습니까?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근을 허용하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
