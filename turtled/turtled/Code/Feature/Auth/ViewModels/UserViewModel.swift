@@ -99,6 +99,12 @@ class UserViewModel: ObservableObject {
                            UserStorageManager.shared.username = responseModel.username
                            UserStorageManager.shared.accessToken = responseModel.access_token
                            UserStorageManager.shared.isLogin = true
+                           UserStorageManager.shared.email = email
+                           
+                           
+                           self.user.email = email
+                           self.user.nickName = responseModel.username
+                           
                            completion(true)
                            print("로그인 진행 완료")
                        } catch {

@@ -2,7 +2,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var viewModel: UserViewModel
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
 
     var body: some View {
         NavigationView{
@@ -91,17 +92,19 @@ struct ProfileView: View {
                     Divider()
                         .padding(.vertical, 10)
                     
-                    // 로그아웃 버튼, 누르면 로그아웃 처리하고 HomeView로 이동
-//                    Button(action: {
-//                        isLoggedOut = true
-//                    }) {
-//                        Text("로그아웃")
-//                            .font(.system(size: 18))
-//                            .foregroundColor(.red)
-//                    }
-//                    .fullScreenCover(isPresented: $isLoggedOut, content: {
-//                        HomeView()
-//                    })
+                    
+                    if UserDefaults.standard.bool(forKey: "isLogin") {
+                        // 로그아웃 버튼, 누르면 로그아웃 처리하고 HomeView로 이동
+                        Button(action: {
+                            logout()
+                        }) {
+                            Text("로그아웃")
+                                .font(.system(size: 18))
+                                .foregroundColor(.red)
+                        }
+                    }
+                    
+                    
                     Spacer()
                 }
                 .padding(.top,20)
@@ -109,9 +112,21 @@ struct ProfileView: View {
                 .accentColor(Color(red: 0.12, green: 0.13, blue: 0.14))
             }
             .navigationTitle("프로필")
+            .toolbar(.visible, for: .tabBar)
 
         }
     }
+    
+    func logout() {
+           // Clear user data
+           UserStorageManager.shared.clearUserData()
+
+           // Set isLogin to false
+           UserStorageManager.shared.isLogin = false
+        // Dismiss the current view
+        presentationMode.wrappedValue.dismiss()
+       }
+    
 }
 
 

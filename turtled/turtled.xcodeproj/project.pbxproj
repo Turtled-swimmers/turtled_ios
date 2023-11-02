@@ -17,6 +17,9 @@
 		980A7F722AB78766003E8DDC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A7F712AB78766003E8DDC /* WebView.swift */; };
 		983D38132ADC5E5B00C52B60 /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D38122ADC5E5B00C52B60 /* MeasurementView.swift */; };
 		983FF9392AF41A5F00508F38 /* ImagesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FF9382AF41A5F00508F38 /* ImagesActions.swift */; };
+		983FF93B2AF4516700508F38 /* VideoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FF93A2AF4516700508F38 /* VideoUploadManager.swift */; };
+		983FF93E2AF4577000508F38 /* PredictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FF93D2AF4577000508F38 /* PredictModel.swift */; };
+		983FF9402AF457C100508F38 /* resultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FF93F2AF457C100508F38 /* resultView.swift */; };
 		985DB5092AE1817900634881 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 985DB5082AE1817900634881 /* FirebaseAnalytics */; };
 		985DB50B2AE1817900634881 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 985DB50A2AE1817900634881 /* FirebaseMessaging */; };
 		985DB50D2AE1824A00634881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985DB50C2AE1824A00634881 /* GoogleService-Info.plist */; };
@@ -61,6 +64,9 @@
 		980A7F712AB78766003E8DDC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		983D38122ADC5E5B00C52B60 /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
 		983FF9382AF41A5F00508F38 /* ImagesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesActions.swift; sourceTree = "<group>"; };
+		983FF93A2AF4516700508F38 /* VideoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploadManager.swift; sourceTree = "<group>"; };
+		983FF93D2AF4577000508F38 /* PredictModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictModel.swift; sourceTree = "<group>"; };
+		983FF93F2AF457C100508F38 /* resultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultView.swift; sourceTree = "<group>"; };
 		985DB50C2AE1824A00634881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		985DB50E2AE1838400634881 /* turtled.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = turtled.entitlements; sourceTree = "<group>"; };
 		985DB5102AE1919B00634881 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				983D38122ADC5E5B00C52B60 /* MeasurementView.swift */,
+				983FF93F2AF457C100508F38 /* resultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +183,8 @@
 		983D38112ADC5E4800C52B60 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				983FF93C2AF4575A00508F38 /* New Group */,
+				983FF93D2AF4577000508F38 /* PredictModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,8 +193,16 @@
 			isa = PBXGroup;
 			children = (
 				983FF9382AF41A5F00508F38 /* ImagesActions.swift */,
+				983FF93A2AF4516700508F38 /* VideoUploadManager.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		983FF93C2AF4575A00508F38 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		985DB50F2AE1918700634881 /* ViewModels */ = {
@@ -528,6 +545,7 @@
 			files = (
 				98B923CA2AB6FDB000BC531F /* CalendarWeekSwiftUIView.swift in Sources */,
 				98B923A52AB6E54100BC531F /* MedalView.swift in Sources */,
+				983FF9402AF457C100508F38 /* resultView.swift in Sources */,
 				98B923A92AB6E56200BC531F /* DalsungView.swift in Sources */,
 				983D38132ADC5E5B00C52B60 /* MeasurementView.swift in Sources */,
 				98B923D42AB71EEC00BC531F /* Date.swift in Sources */,
@@ -551,8 +569,10 @@
 				98B923C22AB6F7AA00BC531F /* AlertView.swift in Sources */,
 				980A7F622AB77244003E8DDC /* QuotesData.swift in Sources */,
 				98B923AF2AB6EDD300BC531F /* MedalModel.swift in Sources */,
+				983FF93E2AF4577000508F38 /* PredictModel.swift in Sources */,
 				980A7F682AB77CA3003E8DDC /* LoginView.swift in Sources */,
 				98B923C82AB6FD9700BC531F /* CalendarHeaderChangeMonthSwiftUIView.swift in Sources */,
+				983FF93B2AF4516700508F38 /* VideoUploadManager.swift in Sources */,
 				98B923D12AB704E900BC531F /* StretchingSessionModel.swift in Sources */,
 				988CE5082AB3249100EADBA4 /* turtledApp.swift in Sources */,
 				980A7F602AB76B3F003E8DDC /* AlertBellView.swift in Sources */,

@@ -3,8 +3,6 @@ import Foundation
 class User: ObservableObject, Codable {
     var nickName: String = ""
     var email: String = ""
-    var version: String?
-    var supportEmail: String?
 }
 
 struct LoginResponse: Codable {

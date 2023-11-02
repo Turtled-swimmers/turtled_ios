@@ -3,17 +3,22 @@ import Foundation
 class UserStorageManager {
     static let shared = UserStorageManager()
     
+    // 유저정보삭제
+    func clearUserData() {
+        UserDefaults.standard.removeObject(forKey: "accessToken")
+        UserDefaults.standard.removeObject(forKey: "isLogin")
+        UserDefaults.standard.removeObject(forKey: "deviceToken")
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.removeObject(forKey: "email")
+    }
+    
     // Access token getter and setter
     var accessToken: String? {
         get { return UserDefaults.standard.string(forKey: "accessToken") }
         set { UserDefaults.standard.set(newValue, forKey: "accessToken") }
     }
     
-    // Refresh token getter and setter
-    var refreshToken: String? {
-        get { return UserDefaults.standard.string(forKey: "refreshToken") }
-        set { UserDefaults.standard.set(newValue, forKey: "refreshToken") }
-    }
+
     // username
     var username: String? {
           get { return UserDefaults.standard.string(forKey: "username") }
@@ -31,4 +36,11 @@ class UserStorageManager {
         get { return UserDefaults.standard.string(forKey: "deviceToken") }
         set { UserDefaults.standard.set(newValue, forKey: "deviceToken") }
     }
+    
+    // device Token Manager
+    var email: String? {
+        get { return UserDefaults.standard.string(forKey: "email") }
+        set { UserDefaults.standard.set(newValue, forKey: "email") }
+    }
+    
 }

@@ -215,7 +215,7 @@ struct HomeView: View {
                         .padding(.top, 90.0)
                 }
                 )
-        }
+        }.toolbar(.visible, for: .tabBar)
     }
 //MARK: - 시간 설정
     func timeString(from totalSeconds: Int) -> String {

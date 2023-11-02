@@ -11,7 +11,15 @@ struct ContentView: View {
 
     }
 
-
+    
+    private func updateUserViewModel() {
+        // 여기서 UserStorageManager를 사용하여 저장된 유저 정보를 가져옵니다.
+        if let nickname = UserStorageManager.shared.username, let email = UserStorageManager.shared.email {
+            uViewModel.user.nickName = nickname
+            uViewModel.user.email = email
+        }
+    }
+    
     var body: some View {
         TabView(selection: $selectedTab) {
 
@@ -20,7 +28,15 @@ struct ContentView: View {
                         Image(selectedTab == 0 ? "home_fill" : "home")
                         Text("홈")
                             .foregroundColor(selectedTab == 0 ? Color(red: 0.59, green: 0.8, blue: 0.7) : Color(red: 0.44, green: 0.45, blue: 0.48))
-                    }.tag(0)
+                    }
+                    .tag(0)
+                    .onAppear {
+                        if(UserStorageManager.shared.isLogin == true)
+                        {
+                            updateUserViewModel()
+                        }
+                    }
+
 
                 MeasurementView()
                     .tabItem {

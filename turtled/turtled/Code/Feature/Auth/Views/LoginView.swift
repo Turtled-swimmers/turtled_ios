@@ -83,7 +83,7 @@ struct LoginView: View {
             }.padding(.top,20)
             .navigationTitle("Login")
             .padding(.horizontal,20)
-            .toolbar(.hidden, for: .tabBar)
+//            .toolbar(.hidden, for: .tabBar)
     }
     
 }
