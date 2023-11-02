@@ -8,6 +8,9 @@ struct SignUpView: View {
     @State private var confirmPassword = ""
     @State private var shouldNavigate = false
     @State private var isLoading = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
     
     @ObservedObject private var userViewModel = UserViewModel.shared // 뷰모델 불러오기
     
@@ -94,15 +97,25 @@ struct SignUpView: View {
                               isLoading = false // Stop loading
                               
                               if success {
-                                  // 회원가입에 성공하면 현재 뷰를 pop하여 이전 화면으로 돌아감
-                                  presentationMode.wrappedValue.dismiss()
+                                  self.alertMessage = "회원가입완료!"
+                                   self.showAlert = true
+                                   // Optionally delay the dismissal to let the user read the message
+                                  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                      self.presentationMode.wrappedValue.dismiss()
+                                  }
                               } else  {
-                                  // Handle the error
                                   print("Registration failed")
                               }
                           }
                       }
                   }, isEnabled: isFormComplete)
+                  .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("알림"),
+                            message: Text(alertMessage),
+                            dismissButton: .default(Text("확인"))
+                        )
+                    }
 
 
                   

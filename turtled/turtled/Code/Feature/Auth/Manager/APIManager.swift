@@ -4,6 +4,7 @@ class APIManager {
     static let shared = APIManager()
     let baseURL = "https://turtled-back.dcs-seochan99.com/api/v1"
     
+    // 폼 POST 요청 -> 회원가입
     func formPostRequest(endpoint: String, requestBody: String, headers: [String: String], completion: @escaping (Data?, Error?) -> Void) {
         guard let url = URL(string: "\(baseURL)\(endpoint)") else {
             completion(nil, NSError(domain: "APIManagerError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL."]))
@@ -18,7 +19,6 @@ class APIManager {
             request.setValue(value, forHTTPHeaderField: key)
         }
         
-        // Convert the form-urlencoded string into Data
         request.httpBody = requestBody.data(using: .utf8)
         
         // URLSession data task
@@ -41,10 +41,12 @@ class APIManager {
     }
 
 
-    
+    // 포스트 요청 -> 로그인
     func postRequest(endpoint: String, parameters: [String: Any], completion: @escaping (Data?, Error?) -> Void) {
         guard let url = URL(string: "\(baseURL)\(endpoint)") else {
-            completion(nil, NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL."]))
+            let urlError = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL."])
+            print("URL error: \(urlError.localizedDescription)")
+            completion(nil, urlError)
             return
         }
 
@@ -54,16 +56,28 @@ class APIManager {
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            print(request.httpBody)
         } catch {
+            print("JSON Serialization error: \(error.localizedDescription)")
             completion(nil, error)
             return
         }
+        
+        print("http통신 성공")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Request error: \(error.localizedDescription)")
+            }
+            
             completion(data, error)
+            print("completion 진행")
+            print(data)
+            
         }.resume()
     }
 
+    // GET
     func getRequest(endpoint: String, headers: [String: String], completion: @escaping (Data?, Error?) -> Void) {
         guard let url = URL(string: "\(baseURL)\(endpoint)") else {
             completion(nil, NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL."]))

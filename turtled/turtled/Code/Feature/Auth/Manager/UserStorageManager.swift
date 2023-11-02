@@ -14,6 +14,11 @@ class UserStorageManager {
         get { return UserDefaults.standard.string(forKey: "refreshToken") }
         set { UserDefaults.standard.set(newValue, forKey: "refreshToken") }
     }
+    // username
+    var username: String? {
+          get { return UserDefaults.standard.string(forKey: "username") }
+          set { UserDefaults.standard.set(newValue, forKey: "username") }
+      }
     
     // Login status getter and setter
     var isLogin: Bool {

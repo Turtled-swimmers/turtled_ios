@@ -10,7 +10,7 @@ struct MeasurementView: View {
     @State private var image: UIImage = UIImage()
     @State private var showImagePicker: Bool = false
     @State private var selectedVideoURL: URL?
-    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
 
 
     
@@ -25,15 +25,8 @@ struct MeasurementView: View {
                         // 버튼
                         GreenHorizontalButtonView(text: "측정하러 가기", action: {
                             showImagePicker.toggle()
+//                            self.showImagePicker = true
                         })
-                        Button("Open Camera") {
-                            self.sourceType = .camera
-                            self.showImagePicker = true
-                        }
-                        Button("Open Photo Library") {
-                            self.sourceType = .photoLibrary
-                            self.showImagePicker = true
-                        }
                         .fullScreenCover(isPresented: $showImagePicker, content: {
                             ImagePicker(selectedVideoURL: $selectedVideoURL, selectedImage: $image, sourceType: $sourceType)
 
